@@ -217,6 +217,10 @@ export class DataSource {
 		return mergeStatus;
 	}
 
+	public async rebaseBranch(repo: string, ontoBranchName: string) {
+		return await this.runGitCommand('rebase ' + escapeRefName(ontoBranchName), repo);
+	}
+
 	public async mergeCommit(repo: string, commitHash: string, createNewCommit: boolean, squash: boolean) {
 		let mergeStatus = await this.runGitCommand('merge ' + commitHash + (createNewCommit && !squash ? ' --no-ff' : '') + (squash ? ' --squash' : ''), repo);
 		if (mergeStatus === null && squash) {

@@ -287,7 +287,15 @@ export interface ResponseMergeBranch {
 	command: 'mergeBranch';
 	status: GitCommandStatus;
 }
-
+export interface RequestRebaseBranch {
+	command: 'rebaseBranch';
+	repo: string;
+	ontoBranchName: string;
+}
+export interface ResponseRebaseBranch {
+	command: 'rebaseBranch';
+	status: GitCommandStatus;
+}
 export interface RequestMergeCommit {
 	command: 'mergeCommit';
 	repo: string;
@@ -384,6 +392,7 @@ export type RequestMessage =
 	| RequestLoadCommits
 	| RequestLoadRepos
 	| RequestMergeBranch
+	| RequestRebaseBranch
 	| RequestMergeCommit
 	| RequestPushTag
 	| RequestRenameBranch
@@ -409,6 +418,7 @@ export type ResponseMessage =
 	| ResponseLoadCommits
 	| ResponseLoadRepos
 	| ResponseMergeBranch
+	| ResponseRebaseBranch
 	| ResponseMergeCommit
 	| ResponsePushTag
 	| ResponseRefresh

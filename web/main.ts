@@ -572,6 +572,14 @@ class GitGraphView {
 									}, null);
 								}
 							}, {
+								title: 'Rebase onto current branch' + ELLIPSIS,
+								onClick: () => {
+									showFormDialog('Are you sure you want to rebase current branch onto <b><i>' + escapeHtml(refName) + '</i></b>', [], 'Yes, rebase', () => {
+										showActionRunningDialog('Rebasing Branch');
+										sendMessage({ command: 'rebaseBranch', repo: this.currentRepo, ontoBranchName: refName });
+									}, null);
+								}
+							}, {
 								title: 'Merge into current branch' + ELLIPSIS,
 								onClick: () => {
 									showFormDialog('Are you sure you want to merge branch <b><i>' + escapeHtml(refName) + '</i></b> into the current branch?', [
